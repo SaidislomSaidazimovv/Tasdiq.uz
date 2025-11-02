@@ -226,15 +226,14 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          <div>
-            <TrustedBySection />
-          </div>
-          
-          <div>
-            <DragCards/>
-          </div>
         </Container>
+        <div>
+          <TrustedBySection />
+        </div>
+
+        <section className="relative w-full bg-[#f8f7ff] py-20 px-8 overflow-hidden">
+          <DragCards />
+        </section>
       </main>
     </>
   );
