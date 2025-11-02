@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import HomeAnimationIMage from "../../assets/home_animation.png";
 import TrustedBySection from "../../components/TrustedBy/TrustedBy";
 import DragCards from "../../components/DragCards/DragCards";
+import TransactionStepsCarousel from "../../components/TransactionCarousel/TransactionCarousel";
 
 const TypingText = () => {
   const words = ["Individuals", "Startups", "YOU", "Marketplaces", "eCommerce"];
@@ -234,6 +235,12 @@ const Home = () => {
         <section className="relative w-full bg-[#f8f7ff] py-20 px-8 overflow-hidden">
           <DragCards />
         </section>
+
+        <Container>
+          <section className="relative w-full py-30 px-8 overflow-hidden">
+            <TransactionStepsCarousel />
+          </section>
+        </Container>
       </main>
     </>
   );
