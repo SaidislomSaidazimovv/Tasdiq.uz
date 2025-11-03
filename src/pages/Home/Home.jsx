@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import Container from "../../components/Layout/Container";
 import { ArrowRight } from "lucide-react";
+import Container from "../../components/Layout/Container";
 import HomeAnimationIMage from "../../assets/home_animation.png";
 import TrustedBySection from "../../components/TrustedBy/TrustedBy";
 import DragCards from "../../components/DragCards/DragCards";
 import TransactionStepsCarousel from "../../components/TransactionCarousel/TransactionCarousel";
+import PartnersMarketplace from "../../components/Partners/PartnersMarketplace";
 
 const TypingText = () => {
   const words = ["Individuals", "Startups", "YOU", "Marketplaces", "eCommerce"];
@@ -138,49 +139,218 @@ const AnimatedCounter = ({
 };
 
 const Home = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
     <>
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-15px);
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-fade-in-left {
+          animation: fadeInLeft 0.6s ease-out forwards;
+        }
+
+        .animate-fade-in-right {
+          animation: fadeInRight 0.6s ease-out forwards;
+        }
+
+        .animate-scale-in {
+          animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-pulse-custom {
+          animation: pulse 2s ease-in-out infinite;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        .btn-hover {
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .btn-hover::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.3);
+          transform: translate(-50%, -50%);
+          transition: width 0.5s, height 0.5s;
+        }
+
+        .btn-hover:hover::before {
+          width: 300px;
+          height: 300px;
+        }
+
+        .btn-hover:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .stat-card {
+          transition: all 0.3s ease;
+        }
+
+        .arrow-animate {
+          transition: transform 0.3s ease;
+        }
+      `}</style>
+
       <main className="min-h-screen bg-white pt-50 pb-16">
         <Container size="large">
           <div className="grid lg:grid-cols-2 gap-16">
             <div className="space-y-10">
               <div className="space-y-6 mt-15">
-                <h1 className="text-7xl font-bold text-black leading-tight">
+                <h1
+                  className={`text-7xl font-bold text-black leading-tight ${
+                    isVisible ? "animate-fade-in-left opacity-0" : "opacity-0"
+                  }`}
+                >
                   Trust in every
                   <br />
                   <span className="text-black">transaction</span>
                 </h1>
 
-                <h2 className="text-3xl lg:text-4xl font-bold text-blue-600">
+                <h2
+                  className={`text-3xl lg:text-4xl font-bold text-blue-600 ${
+                    isVisible
+                      ? "animate-fade-in-left opacity-0 delay-200"
+                      : "opacity-0"
+                  }`}
+                >
                   Built for <TypingText />
                 </h2>
 
-                <p className="text-2xl text-gray-600 max-w-2xl font-normal">
+                <p
+                  className={`text-2xl text-gray-600 max-w-2xl font-normal ${
+                    isVisible
+                      ? "animate-fade-in-left opacity-0 delay-300"
+                      : "opacity-0"
+                  }`}
+                >
                   An end-to-end transaction solution that seamlessly integrates
                   payments, fulfilment and support into your marketplace or
                   ecommerce store.
                 </p>
               </div>
 
-              <button className="inline-flex items-center space-x-2 px-8 py-4 border-2 bg-blue-600 text-white text-lg font-bold rounded-xl hover:bg-blue-700 transition-all hover:bg-white hover:text-blue-600">
-                <span>Get in Touch</span>
-                <ArrowRight className="w-6 h-6" />
+              <button
+                className={`btn-hover inline-flex items-center space-x-2 px-8 py-4 border-2 bg-blue-600 text-white text-lg font-bold rounded-xl hover:bg-white hover:text-blue-600 ${
+                  isVisible
+                    ? "animate-fade-in-left opacity-0 delay-400"
+                    : "opacity-0"
+                }`}
+              >
+                <span className="relative z-10">Get in Touch</span>
+                <ArrowRight className="w-6 h-6 relative z-10 arrow-animate " />
               </button>
             </div>
 
-            <div className="relative ml-15">
+            <div
+              className={`relative ml-15 ${
+                isVisible
+                  ? "animate-fade-in-right opacity-0 delay-300"
+                  : "opacity-0"
+              }`}
+            >
               <img
-                className="w-150"
+                className="w-150 animate-float"
                 src={HomeAnimationIMage}
                 alt="AnimationImage"
               />
             </div>
           </div>
 
-          <div className="w-full bg-white py-30 px-4">
+          <div
+            className={`w-full bg-white py-30 px-4 ${
+              isVisible ? "animate-fade-in-up opacity-0 delay-500" : "opacity-0"
+            }`}
+          >
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center justify-between gap-8 md:gap-16 flex-wrap md:flex-nowrap">
-                <div className="flex flex-col items-center justify-center">
+                <div className="stat-card flex flex-col items-center justify-center">
                   <div className="text-center">
                     <p className="text-5xl md:text-6xl font-bold text-blue-600 mb-3">
                       <AnimatedCounter end={10} prefix="$" suffix="M+" />
@@ -189,7 +359,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="animate-pulse-custom">
                   <img
                     src="https://www.trustap.com/wp-content/uploads/2024/10/separator.svg"
                     alt=""
@@ -197,7 +367,7 @@ const Home = () => {
                   />
                 </div>
 
-                <div className="flex flex-col items-center justify-center">
+                <div className="stat-card flex flex-col items-center justify-center">
                   <div className="text-center">
                     <p className="text-5xl md:text-6xl font-bold text-blue-600 mb-3">
                       <AnimatedCounter end={250} suffix="+" />
@@ -208,7 +378,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="animate-pulse-custom">
                   <img
                     src="https://www.trustap.com/wp-content/uploads/2024/10/separator.svg"
                     alt=""
@@ -216,7 +386,7 @@ const Home = () => {
                   />
                 </div>
 
-                <div className="flex flex-col items-center justify-center">
+                <div className="stat-card flex flex-col items-center justify-center">
                   <div className="text-center">
                     <p className="text-5xl md:text-6xl font-bold text-blue-600 mb-3">
                       <AnimatedCounter end={840000} suffix="+" />
@@ -235,10 +405,12 @@ const Home = () => {
         <section className="relative w-full bg-[#f8f7ff] py-20 px-8 overflow-hidden">
           <DragCards />
         </section>
-
         <Container>
           <section className="relative w-full py-30 px-8 overflow-hidden">
             <TransactionStepsCarousel />
+          </section>
+          <section>
+            <PartnersMarketplace />
           </section>
         </Container>
       </main>
