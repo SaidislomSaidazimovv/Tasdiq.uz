@@ -250,8 +250,8 @@ const Header = () => {
                 {" "}
                 <img
                   src={Logo}
-                  alt="Trustap Logo"
-                  className="h-15 w-auto object-contain"
+                  alt="Header Logo"
+                  className="h-13 w-auto object-contain"
                 />
               </a>
             </div>

@@ -6,6 +6,7 @@ import TrustedBySection from "../../components/TrustedBy/TrustedBy";
 import DragCards from "../../components/DragCards/DragCards";
 import TransactionStepsCarousel from "../../components/TransactionCarousel/TransactionCarousel";
 import PartnersMarketplace from "../../components/Partners/PartnersMarketplace";
+import StripePartnerBanner from "../../components/StripeBanner/StripeBanner";
 
 const TypingText = () => {
   const words = ["Individuals", "Startups", "YOU", "Marketplaces", "eCommerce"];
@@ -278,7 +279,7 @@ const Home = () => {
         }
       `}</style>
 
-      <main className="min-h-screen bg-white pt-50 pb-16">
+      <main className="min-h-screen bg-white pt-50">
         <Container size="large">
           <div className="grid lg:grid-cols-2 gap-16">
             <div className="space-y-10">
@@ -413,6 +414,9 @@ const Home = () => {
             <PartnersMarketplace />
           </section>
         </Container>
+        <section>
+          <StripePartnerBanner />
+        </section>
       </main>
     </>
   );
