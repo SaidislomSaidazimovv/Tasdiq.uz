@@ -7,6 +7,8 @@ import DragCards from "../../components/DragCards/DragCards";
 import TransactionStepsCarousel from "../../components/TransactionCarousel/TransactionCarousel";
 import PartnersMarketplace from "../../components/Partners/PartnersMarketplace";
 import StripePartnerBanner from "../../components/StripeBanner/StripeBanner";
+import Comments from "../../components/Comments/Comments";
+import HomeMainImg from "../../assets/hero_main_img.png"
 
 const TypingText = () => {
   const words = ["Individuals", "Startups", "YOU", "Marketplaces", "eCommerce"];
@@ -338,7 +340,7 @@ const Home = () => {
             >
               <img
                 className="w-150 animate-float"
-                src={HomeAnimationIMage}
+                src={HomeMainImg}
                 alt="AnimationImage"
               />
             </div>
@@ -412,6 +414,9 @@ const Home = () => {
           </section>
           <section>
             <PartnersMarketplace />
+          </section>
+          <section>
+            <Comments />
           </section>
         </Container>
         <section>

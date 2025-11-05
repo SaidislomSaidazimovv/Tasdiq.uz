@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ChevronDown,
   Menu,
@@ -11,6 +12,8 @@ import {
   Users,
   Code,
   Building,
+  LogOut,
+  UserCircle,
 } from "lucide-react";
 import Container from "../Layout/Container";
 import Logo from "../../assets/tasdiq_logo.svg";
@@ -19,6 +22,12 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const navigate = useNavigate();
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const username = localStorage.getItem("username");
+  const userRole = localStorage.getItem("userRole");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +36,23 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogoutClick = () => {
+    setShowLogoutConfirm(true);
+  };
+
+  const confirmLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("username");
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userRole");
+    setShowLogoutConfirm(false);
+    navigate("/login", { replace: true });
+  };
+
+  const cancelLogout = () => {
+    setShowLogoutConfirm(false);
+  };
 
   const dropdownContent = {
     Solutions: [
@@ -236,6 +262,14 @@ const Header = () => {
         .logo-animate {
           transition: transform 0.3s ease;
         }
+
+        .dropdown-link:hover .dropdown-icon {
+          transform: scale(1.1);
+        }
+
+        .dropdown-link:hover .dropdown-title {
+          color: #2563eb;
+        }
       `}</style>
 
       <header
@@ -247,7 +281,6 @@ const Header = () => {
           <div className="flex items-center justify-between h-25">
             <div className="flex items-center animate-slide-in-left">
               <a href="/" className="flex items-center logo-animate">
-                {" "}
                 <img
                   src={Logo}
                   alt="Header Logo"
@@ -293,13 +326,13 @@ const Header = () => {
                           <a
                             key={idx}
                             href="#"
-                            className="dropdown-item flex items-start space-x-3 p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent transition-all duration-300 group/item transform hover:scale-105"
+                            className="dropdown-item dropdown-link flex items-start space-x-3 p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent transition-all duration-300 transform hover:scale-105"
                           >
-                            <div className="flex-shrink-0 text-blue-600 mt-1 transform group-hover/item:scale-110 transition-transform duration-300">
+                            <div className="dropdown-icon flex-shrink-0 text-blue-600 mt-1 transform transition-transform duration-300">
                               {dropItem.icon}
                             </div>
                             <div className="flex-1">
-                              <h3 className="font-semibold text-gray-900 mb-1 group-hover/item:text-blue-600 transition-colors">
+                              <h3 className="dropdown-title font-semibold text-gray-900 mb-1 transition-colors">
                                 {dropItem.title}
                               </h3>
                               <p className="text-sm text-gray-600 leading-relaxed">
@@ -316,14 +349,37 @@ const Header = () => {
             </nav>
 
             <div className="hidden lg:flex items-center space-x-4 animate-slide-in-right">
-              <button className="btn-hover flex items-center space-x-2 px-7 py-3 border-2 border-blue-600 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 font-semibold transform">
-                <span className="text-lg">Transact Now</span>
-                <ArrowRight className="w-5 h-5 arrow-animate" />
-              </button>
-              <button className="btn-hover flex items-center space-x-2 px-7 py-3 border-2 border-blue-600 bg-blue-600 text-white rounded-xl hover:bg-white hover:text-blue-600 hover:border-blue-700 transition-all duration-300 font-semibold transform">
-                <span className="text-lg">Contact Us</span>
-                <ArrowRight className="w-5 h-5 arrow-animate" />
-              </button>
+              {isLoggedIn ? (
+                <>
+                  <div className="flex items-center space-x-3 px-4 py-2 bg-gradient-to-r from-blue-50 to-transparent rounded-xl border border-blue-100">
+                    <UserCircle className="w-6 h-6 text-blue-600" />
+                    <div className="flex flex-col">
+                      <span className="text-sm font-bold text-gray-800">
+                        {username}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <button
+                    onClick={handleLogoutClick}
+                    className="btn-hover flex items-center space-x-2 px-6 py-2.5 border-2 border-red-500 bg-red-500 text-white rounded-xl hover:bg-red-600 hover:border-red-600 transition-all duration-300 font-semibold"
+                  >
+                    <LogOut className="w-5 h-5" />
+                    <span className="text-base">Logout</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button className="btn-hover flex items-center space-x-2 px-7 py-3 border-2 border-blue-600 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 font-semibold transform">
+                    <span className="text-lg">Transact Now</span>
+                    <ArrowRight className="w-5 h-5 arrow-animate" />
+                  </button>
+                  <button className="btn-hover flex items-center space-x-2 px-7 py-3 border-2 border-blue-600 bg-blue-600 text-white rounded-xl hover:bg-white hover:text-blue-600 hover:border-blue-700 transition-all duration-300 font-semibold transform">
+                    <span className="text-lg">Contact Us</span>
+                    <ArrowRight className="w-5 h-5 arrow-animate" />
+                  </button>
+                </>
+              )}
             </div>
 
             <button
@@ -386,11 +442,78 @@ const Header = () => {
                     )}
                   </div>
                 ))}
+
+                {isLoggedIn && (
+                  <div className="px-4 pt-4 space-y-3 border-t border-gray-200 mt-4">
+                    <div className="flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-blue-50 to-transparent rounded-xl border border-blue-100">
+                      <UserCircle className="w-6 h-6 text-blue-600" />
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-gray-800">
+                          {username}
+                        </span>
+                        {userRole === "admin" && (
+                          <span className="text-xs text-blue-600 font-semibold">
+                            Administrator
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {userRole === "admin" && (
+                      <a
+                        href="/dashboard"
+                        className="block w-full px-4 py-3 border-2 border-green-500 text-green-600 rounded-xl hover:bg-green-500 hover:text-white transition-all duration-300 font-semibold text-center"
+                      >
+                        Dashboard
+                      </a>
+                    )}
+
+                    <button
+                      onClick={handleLogoutClick}
+                      className="w-full flex items-center justify-center space-x-2 px-4 py-3 border-2 border-red-500 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-300 font-semibold"
+                    >
+                      <LogOut className="w-5 h-5" />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                )}
               </nav>
             </div>
           )}
         </Container>
       </header>
+
+      {showLogoutConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100] px-4">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl animate-scale-in">
+            <div className="text-center mb-6">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <LogOut className="w-10 h-10 text-blue-600" />
+              </div>
+              <h2 className="text-3xl font-bold mb-3 text-gray-900">
+                Logout qilmoqchimisiz?
+              </h2>
+              <p className="text-gray-600 leading-relaxed text-base">
+                Haqiqatan ham tizimdan chiqishni xohlaysizmi?
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <button
+                onClick={cancelLogout}
+                className="flex-1 px-6 py-3.5 bg-gray-100 text-gray-800 rounded-xl hover:bg-gray-200 transition-all duration-300 font-bold text-base"
+              >
+                Yo'q
+              </button>
+              <button
+                onClick={confirmLogout}
+                className="flex-1 px-6 py-3.5 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-all duration-300 font-bold text-base shadow-lg hover:shadow-xl"
+              >
+                Ha, Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
