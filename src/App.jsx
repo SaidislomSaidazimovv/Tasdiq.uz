@@ -12,57 +12,57 @@ import Users from "./pages/Dashboard/Users";
 import Comments from "./pages/Dashboard/Comments";
 import Ratings from "./pages/Dashboard/Ratings";
 
-function ProtectedRoute({ children }) {
-  const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+// function ProtectedRoute({ children }) {
+//   const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
+//   if (!isAuthenticated) {
+//     return <Navigate to="/login" replace />;
+//   }
 
-  return children;
-}
+//   return children;
+// }
 
-function AdminRoute({ children }) {
-  const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
-  const userRole = localStorage.getItem("userRole");
+// function AdminRoute({ children }) {
+//   const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+//   const userRole = localStorage.getItem("userRole");
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
+//   if (!isAuthenticated) {
+//     return <Navigate to="/login" replace />;
+//   }
 
-  if (userRole !== "admin") {
-    return <Navigate to="/" replace />;
-  }
+//   if (userRole !== "admin") {
+//     return <Navigate to="/" replace />;
+//   }
 
-  return children;
-}
+//   return children;
+// }
 
-function UserRoute({ children }) {
-  const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
-  const userRole = localStorage.getItem("userRole");
+// function UserRoute({ children }) {
+//   const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
+//   const userRole = localStorage.getItem("userRole");
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
+//   if (!isAuthenticated) {
+//     return <Navigate to="/login" replace />;
+//   }
 
-  if (userRole === "admin") {
-    return <Navigate to="/dashboard" replace />;
-  }
+//   if (userRole === "admin") {
+//     return <Navigate to="/dashboard" replace />;
+//   }
 
-  return children;
-}
+//   return children;
+// }
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} /> */}
 
         <Route
           path="/"
           element={
-            <UserRoute>
+            // <UserRoute>
               <>
                 <Header />
                 <main>
@@ -70,16 +70,16 @@ function App() {
                 </main>
                 <Footer />
               </>
-            </UserRoute>
+            // </UserRoute>
           }
         />
 
         <Route
           path="/dashboard"
           element={
-            <AdminRoute>
+            // <AdminRoute>
               <Dashboard />
-            </AdminRoute>
+            // </AdminRoute>
           }
         >
           <Route index element={<Navigate to="overview" replace />} />
@@ -89,7 +89,7 @@ function App() {
           <Route path="ratings" element={<Ratings />} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
       </Routes>
     </div>
   );

@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import Container from "../../components/Layout/Container";
-import HomeAnimationIMage from "../../assets/home_animation.png";
+// import HomeAnimationIMage from "../../assets/home_animation.png";
 import TrustedBySection from "../../components/TrustedBy/TrustedBy";
 import DragCards from "../../components/DragCards/DragCards";
 import TransactionStepsCarousel from "../../components/TransactionCarousel/TransactionCarousel";
 import PartnersMarketplace from "../../components/Partners/PartnersMarketplace";
 import StripePartnerBanner from "../../components/StripeBanner/StripeBanner";
 import Comments from "../../components/Comments/Comments";
-import HomeMainImg from "../../assets/hero_main_img.png"
+import HomeMainImg from "../../assets/hero_main_img.png";
+import TelegramChatOverlay from "../../components/TelegramChatOverlay/TelegramChatOverlay";
+// import { motion } from "framer-motion";
 
 const TypingText = () => {
   const words = ["Individuals", "Startups", "YOU", "Marketplaces", "eCommerce"];
@@ -283,68 +285,70 @@ const Home = () => {
 
       <main className="min-h-screen bg-white pt-50">
         <Container size="large">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div className="space-y-10">
-              <div className="space-y-6 mt-15">
-                <h1
-                  className={`text-7xl font-bold text-black leading-tight ${
-                    isVisible ? "animate-fade-in-left opacity-0" : "opacity-0"
-                  }`}
-                >
-                  Trust in every
-                  <br />
-                  <span className="text-black">transaction</span>
-                </h1>
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-10">
+                <div className="space-y-6">
+                  <h1
+                    className={`text-5xl md:text-7xl font-bold text-black leading-tight ${
+                      isVisible ? "animate-fade-in-left opacity-0" : "opacity-0"
+                    }`}
+                  >
+                    Trust in every
+                    <br />
+                    <span className="text-black">transaction</span>
+                  </h1>
 
-                <h2
-                  className={`text-3xl lg:text-4xl font-bold text-blue-600 ${
+                  <h2
+                    className={`text-2xl md:text-4xl font-bold text-blue-600 ${
+                      isVisible
+                        ? "animate-fade-in-left opacity-0 delay-200"
+                        : "opacity-0"
+                    }`}
+                  >
+                    Built for <TypingText />
+                  </h2>
+
+                  <p
+                    className={`text-lg md:text-2xl text-gray-600 max-w-2xl font-normal ${
+                      isVisible
+                        ? "animate-fade-in-left opacity-0 delay-300"
+                        : "opacity-0"
+                    }`}
+                  >
+                    An end-to-end transaction solution that seamlessly
+                    integrates payments, fulfilment and support into your
+                    marketplace or ecommerce store.
+                  </p>
+                </div>
+
+                <button
+                  className={`btn-hover inline-flex items-center space-x-2 px-8 py-4 border-2 bg-blue-600 text-white text-lg font-bold rounded-xl hover:bg-white hover:text-blue-600 ${
                     isVisible
-                      ? "animate-fade-in-left opacity-0 delay-200"
+                      ? "animate-fade-in-left opacity-0 delay-400"
                       : "opacity-0"
                   }`}
                 >
-                  Built for <TypingText />
-                </h2>
-
-                <p
-                  className={`text-2xl text-gray-600 max-w-2xl font-normal ${
-                    isVisible
-                      ? "animate-fade-in-left opacity-0 delay-300"
-                      : "opacity-0"
-                  }`}
-                >
-                  An end-to-end transaction solution that seamlessly integrates
-                  payments, fulfilment and support into your marketplace or
-                  ecommerce store.
-                </p>
+                  <span className="relative z-10">Get in Touch</span>
+                  <ArrowRight className="w-6 h-6 relative z-10" />
+                </button>
               </div>
 
-              <button
-                className={`btn-hover inline-flex items-center space-x-2 px-8 py-4 border-2 bg-blue-600 text-white text-lg font-bold rounded-xl hover:bg-white hover:text-blue-600 ${
+              <div
+                className={`relative ${
                   isVisible
-                    ? "animate-fade-in-left opacity-0 delay-400"
+                    ? "animate-fade-in-right opacity-0 delay-300"
                     : "opacity-0"
                 }`}
               >
-                <span className="relative z-10">Get in Touch</span>
-                <ArrowRight className="w-6 h-6 relative z-10 arrow-animate " />
-              </button>
-            </div>
+                <div className="relative w-full h-[600px]">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-3xl opacity-30 blur-3xl"></div>
+                  </div>
 
-            <div
-              className={`relative ml-15 ${
-                isVisible
-                  ? "animate-fade-in-right opacity-0 delay-300"
-                  : "opacity-0"
-              }`}
-            >
-              <img
-                className="w-150 animate-float"
-                src={HomeMainImg}
-                alt="AnimationImage"
-              />
+                  <TelegramChatOverlay />
+                </div>
+              </div>
             </div>
-          </div>
 
           <div
             className={`w-full bg-white py-30 px-4 ${
@@ -401,9 +405,9 @@ const Home = () => {
             </div>
           </div>
         </Container>
-        <div>
+        {/* <div>
           <TrustedBySection />
-        </div>
+        </div> */}
 
         <section className="relative w-full bg-[#f8f7ff] py-20 px-8 overflow-hidden">
           <DragCards />
