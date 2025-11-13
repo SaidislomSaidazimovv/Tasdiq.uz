@@ -10,6 +10,7 @@ import StripePartnerBanner from "../../components/StripeBanner/StripeBanner";
 import Comments from "../../components/Comments/Comments";
 import HomeMainImg from "../../assets/hero_main_img.png";
 import TelegramChatOverlay from "../../components/TelegramChatOverlay/TelegramChatOverlay";
+import B2BPaymentDiagram from "../../components/ManualCard/ManualCard";
 // import { motion } from "framer-motion";
 
 const TypingText = () => {
@@ -412,7 +413,11 @@ const Home = () => {
         <section className="relative w-full bg-[#f8f7ff] py-20 px-8 overflow-hidden">
           <DragCards />
         </section>
+
         <Container>
+        <section>
+          <B2BPaymentDiagram/>
+        </section>
           <section className="relative w-full py-30 px-8 overflow-hidden">
             <TransactionStepsCarousel />
           </section>
