@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import Container from "../../components/Layout/Container";
-// import HomeAnimationIMage from "../../assets/home_animation.png";
 import TrustedBySection from "../../components/TrustedBy/TrustedBy";
 import DragCards from "../../components/DragCards/DragCards";
 import TransactionStepsCarousel from "../../components/TransactionCarousel/TransactionCarousel";
@@ -10,7 +9,8 @@ import StripePartnerBanner from "../../components/StripeBanner/StripeBanner";
 import Comments from "../../components/Comments/Comments";
 import HomeMainImg from "../../assets/hero_main_img.png";
 import TelegramChatOverlay from "../../components/TelegramChatOverlay/TelegramChatOverlay";
-import B2BPaymentDiagram from "../../components/ManualCard/ManualCard";
+import ManualCard from "../../components/ManualCard/ManualCard";
+import B2BPayments from "../../components/B2B/B2BPayments";
 // import { motion } from "framer-motion";
 
 const TypingText = () => {
@@ -416,7 +416,10 @@ const Home = () => {
 
         <Container>
         <section>
-          <B2BPaymentDiagram/>
+          <ManualCard/>
+        </section>
+        <section>
+          <B2BPayments/>
         </section>
           <section className="relative w-full py-30 px-8 overflow-hidden">
             <TransactionStepsCarousel />
