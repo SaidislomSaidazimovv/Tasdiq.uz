@@ -13,6 +13,9 @@ import ManualCard from "../../components/ManualCard/ManualCard";
 import B2BPayments from "../../components/B2B/B2BPayments";
 import HeroSection from "../HeroSection/HeroSection";
 import ComparisonTable from "../../components/ComparisonTable/ComparisonTable";
+import UseForWho from "../../components/UseForWho/UseForWho";
+import TrustStatsSection from "../../components/TrustSection/TrustStats";
+import CTASection from "../../components/CTA/CTASection";
 // import { motion } from "framer-motion";
 
 const TypingText = () => {
@@ -288,76 +291,11 @@ const Home = () => {
 
       <main className="min-h-screen bg-white pt-50">
         <Container size="large">
-            {/* <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-10">
-                <div className="space-y-6">
-                  <h1
-                    className={`text-5xl md:text-7xl font-bold text-black leading-tight ${
-                      isVisible ? "animate-fade-in-left opacity-0" : "opacity-0"
-                    }`}
-                  >
-                    Trust in every
-                    <br />
-                    <span className="text-black">transaction</span>
-                  </h1>
+          <section>
+            <HeroSection />
+          </section>
 
-                  <h2
-                    className={`text-2xl md:text-4xl font-bold text-blue-600 ${
-                      isVisible
-                        ? "animate-fade-in-left opacity-0 delay-200"
-                        : "opacity-0"
-                    }`}
-                  >
-                    Built for <TypingText />
-                  </h2>
-
-                  <p
-                    className={`text-lg md:text-2xl text-gray-600 max-w-2xl font-normal ${
-                      isVisible
-                        ? "animate-fade-in-left opacity-0 delay-300"
-                        : "opacity-0"
-                    }`}
-                  >
-                    An end-to-end transaction solution that seamlessly
-                    integrates payments, fulfilment and support into your
-                    marketplace or ecommerce store.
-                  </p>
-                </div>
-
-                <button
-                  className={`btn-hover inline-flex items-center space-x-2 px-8 py-4 border-2 bg-blue-600 text-white text-lg font-bold rounded-xl hover:bg-white hover:text-blue-600 ${
-                    isVisible
-                      ? "animate-fade-in-left opacity-0 delay-400"
-                      : "opacity-0"
-                  }`}
-                >
-                  <span className="relative z-10">Get in Touch</span>
-                  <ArrowRight className="w-6 h-6 relative z-10" />
-                </button>
-              </div>
-
-              <div
-                className={`relative ${
-                  isVisible
-                    ? "animate-fade-in-right opacity-0 delay-300"
-                    : "opacity-0"
-                }`}
-              >
-                <div className="relative w-full h-[600px]">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-full h-full bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-3xl opacity-30 blur-3xl"></div>
-                  </div>
-
-                  <TelegramChatOverlay />
-                </div>
-              </div>
-            </div> */}
-
-            <section>
-              <HeroSection/>
-            </section>
-
-          <div
+          {/* <div
             className={`w-full bg-white py-30 px-4 ${
               isVisible ? "animate-fade-in-up opacity-0 delay-500" : "opacity-0"
             }`}
@@ -410,7 +348,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </Container>
         {/* <div>
           <TrustedBySection />
@@ -421,26 +359,35 @@ const Home = () => {
         </section>
 
         <section>
-          <ComparisonTable/>
+          <ComparisonTable />
         </section>
 
         <Container>
-        {/* <section>
+          {/* <section>
           <ManualCard/>
         </section>
         <section>
           <B2BPayments/>
         </section> */}
-          <section className="relative w-full py-30 px-8 overflow-hidden">
+          {/* <section className="relative w-full py-30 px-8 overflow-hidden">
             <TransactionStepsCarousel />
-          </section>
+          </section> */}
           <section>
+            <UseForWho />
+          </section>
+          {/* <section>
             <PartnersMarketplace />
+          </section> */}
+          <section>
+            <TrustStatsSection />
           </section>
           <section>
             <Comments />
           </section>
         </Container>
+        <section>
+          <CTASection />
+        </section>
         {/* <section>
           <StripePartnerBanner />
         </section> */}
