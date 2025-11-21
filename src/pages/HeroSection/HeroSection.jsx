@@ -131,9 +131,12 @@ const HeroSection = () => {
                 Demoni ko'rish
               </button>
 
-              <button className="px-8 py-4 bg-white text-gray-900 text-lg font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300">
+              <a
+                href="#how-it-works"
+                className="px-8 py-4 bg-white text-gray-900 text-lg font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300"
+              >
                 Qanday ishlaydi?
-              </button>
+              </a>
             </div>
             <div
               className={`flex flex-wrap gap-4 ${

@@ -197,11 +197,11 @@ const DragCardsSection = () => {
       `}</style>
 
       <Container>
-        <div ref={sectionRef} className="py-20">
+        <div ref={sectionRef} className="py-20" id="how-it-works">
           {!showSteps ? (
             <div className="mx-auto flex flex-col md:flex-row justify-between items-center gap-16">
               <div
-                className={`md:w-1/2 text-left space-y-6 ${
+                className={`md:w-1/2 text-left space-y-6 ml-7 ${
                   isVisible ? "animate-fade-in-left opacity-0" : "opacity-0"
                 }`}
               >

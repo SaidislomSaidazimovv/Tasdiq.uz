@@ -294,61 +294,6 @@ const Home = () => {
           <section>
             <HeroSection />
           </section>
-
-          {/* <div
-            className={`w-full bg-white py-30 px-4 ${
-              isVisible ? "animate-fade-in-up opacity-0 delay-500" : "opacity-0"
-            }`}
-          >
-            <div className="max-w-6xl mx-auto">
-              <div className="flex items-center justify-between gap-8 md:gap-16 flex-wrap md:flex-nowrap">
-                <div className="stat-card flex flex-col items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-5xl md:text-6xl font-bold text-blue-600 mb-3">
-                      <AnimatedCounter end={10} prefix="$" suffix="M+" />
-                    </p>
-                    <p className="text-gray-600 text-2xl">Monthly GMV</p>
-                  </div>
-                </div>
-
-                <div className="animate-pulse-custom">
-                  <img
-                    src="https://www.trustap.com/wp-content/uploads/2024/10/separator.svg"
-                    alt=""
-                    className="h-24 md:h-50"
-                  />
-                </div>
-
-                <div className="stat-card flex flex-col items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-5xl md:text-6xl font-bold text-blue-600 mb-3">
-                      <AnimatedCounter end={250} suffix="+" />
-                    </p>
-                    <p className="text-gray-600 text-2xl">
-                      Marketplace Partners
-                    </p>
-                  </div>
-                </div>
-
-                <div className="animate-pulse-custom">
-                  <img
-                    src="https://www.trustap.com/wp-content/uploads/2024/10/separator.svg"
-                    alt=""
-                    className="h-24 md:h-50"
-                  />
-                </div>
-
-                <div className="stat-card flex flex-col items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-5xl md:text-6xl font-bold text-blue-600 mb-3">
-                      <AnimatedCounter end={840000} suffix="+" />
-                    </p>
-                    <p className="text-gray-600 text-2xl">Users</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </Container>
         {/* <div>
           <TrustedBySection />

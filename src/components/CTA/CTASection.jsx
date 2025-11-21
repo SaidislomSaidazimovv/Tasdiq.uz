@@ -120,52 +120,59 @@ const CTASection = () => {
         .delay-400 { animation-delay: 0.4s; }
       `}</style>
 
-      <div ref={sectionRef} className="bg-[#0a1929] py-24 w-full">
+      <div
+        ref={sectionRef}
+        className="bg-[#0a1929] py-24 w-full"
+        id="registration"
+      >
         {/* <Container> */}
-          <div className="max-w-4xl mx-auto text-center space-y-12">
-            <div
-              className={`space-y-6 ${
-                isVisible ? "animate-fade-in-up opacity-0" : "opacity-0"
-              }`}
-            >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Xavfsizlikni bugundan boshlang
-              </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Birinchi 200 foydalanuvchi uchun komissiya atigi 1%. Oddiy to'lovdan TASDIQ himoyasiga o'ting.
-              </p>
-            </div>
-            <div
-              className={`flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto ${
-                isVisible ? "animate-fade-in-scale opacity-0 delay-200" : "opacity-0"
-              }`}
-            >
-              <input
-                type="tel"
-                value={phoneNumber}
-                onChange={handlePhoneChange}
-                placeholder="+998 90 123 45 67"
-                className="input-focus flex-1 px-6 py-4 text-lg rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none bg-white text-gray-900 placeholder-gray-400"
-              />
-              
-              <button className="btn-shimmer flex items-center justify-center space-x-2 px-8 py-4 text-white text-lg font-bold rounded-xl">
-                <span>Ro'yxatdan o'tish</span>
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-            <div
-              className={`flex flex-wrap items-center justify-center gap-6 md:gap-8 text-gray-300 ${
-                isVisible ? "animate-fade-in-up opacity-0 delay-400" : "opacity-0"
-              }`}
-            >
-              {features.map((feature, index) => (
-                <div key={index} className="flex items-center space-x-2">
-                  <Check className="w-5 h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-sm md:text-base">{feature}</span>
-                </div>
-              ))}
-            </div>
-            {/* <div
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          <div
+            className={`space-y-6 ${
+              isVisible ? "animate-fade-in-up opacity-0" : "opacity-0"
+            }`}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              Xavfsizlikni bugundan boshlang
+            </h2>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Birinchi 200 foydalanuvchi uchun komissiya atigi 1%. Oddiy
+              to'lovdan TASDIQ himoyasiga o'ting.
+            </p>
+          </div>
+          <div
+            className={`flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto ${
+              isVisible
+                ? "animate-fade-in-scale opacity-0 delay-200"
+                : "opacity-0"
+            }`}
+          >
+            <input
+              type="tel"
+              value={phoneNumber}
+              onChange={handlePhoneChange}
+              placeholder="+998 90 123 45 67"
+              className="input-focus flex-1 px-6 py-4 text-lg rounded-xl border-2 border-gray-300 focus:border-blue-500 focus:outline-none bg-white text-gray-900 placeholder-gray-400"
+            />
+
+            <button className="btn-shimmer flex items-center justify-center space-x-2 px-8 py-4 text-white text-lg font-bold rounded-xl">
+              <span>Ro'yxatdan o'tish</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+          <div
+            className={`flex flex-wrap items-center justify-center gap-6 md:gap-8 text-gray-300 ${
+              isVisible ? "animate-fade-in-up opacity-0 delay-400" : "opacity-0"
+            }`}
+          >
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-center space-x-2">
+                <Check className="w-5 h-5 text-green-400 flex-shrink-0" />
+                <span className="text-sm md:text-base">{feature}</span>
+              </div>
+            ))}
+          </div>
+          {/* <div
               className={`pt-8 ${
                 isVisible ? "animate-fade-in-up opacity-0 delay-300" : "opacity-0"
               }`}
@@ -179,7 +186,7 @@ const CTASection = () => {
                 </div>
               </div>
             </div> */}
-          </div>
+        </div>
         {/* </Container> */}
       </div>
     </>

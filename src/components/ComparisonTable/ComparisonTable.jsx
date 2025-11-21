@@ -117,7 +117,7 @@ const ComparisonTable = () => {
         .delay-800 { animation-delay: 0.8s; }
       `}</style>
 
-      <div ref={sectionRef} className="bg-gray-50 py-20">
+      <div ref={sectionRef} className="bg-gray-50 py-20" id="benefits">
         <Container>
           <div className="space-y-12">
             <div

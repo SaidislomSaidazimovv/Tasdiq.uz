@@ -52,9 +52,9 @@ const Header = () => {
   };
 
   const menuItems = [
-    { name: "Qanday ishlaydi" },
-    { name: "Afzalliklar" },
-    { name: "Narxlar" },
+    { name: "Qanday ishlaydi", href: "#how-it-works" },
+    { name: "Afzalliklar", href: "#benefits" },
+    { name: "Narxlar", href: "#pricing" },
   ];
 
   return (
@@ -162,7 +162,7 @@ const Header = () => {
         }
 
         .logo-animate:hover {
-          // transform: scale(1.05);
+          transform: scale(1.05);
           filter: brightness(1.1);
         }
 
@@ -196,12 +196,15 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-1">
             {menuItems.map((item, index) => (
               <div key={index} className="relative group menu-item">
-                <button className="flex items-center space-x-1 text-sm text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium py-2 px-5 relative group nav-button">
+                <a
+                  href={item.href}
+                  className="flex items-center space-x-1 text-sm text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium py-2 px-5 relative group nav-button"
+                >
                   <span className="relative">
                     {item.name}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
                   </span>
-                </button>
+                </a>
               </div>
             ))}
           </nav>
@@ -227,9 +230,12 @@ const Header = () => {
                 </button>
               </>
             ) : (
-              <button className="btn-hover px-8 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-sm shadow-md hover:shadow-xl transform hover:scale-105">
+              <a
+                href="#registration"
+                className="btn-hover px-8 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-sm shadow-md hover:shadow-xl transform hover:scale-105"
+              >
                 <span>Boshlash</span>
-              </button>
+              </a>
             )}
           </div>
 
@@ -250,9 +256,12 @@ const Header = () => {
             <nav className="py-4 space-y-2 px-4">
               {menuItems.map((item, index) => (
                 <div key={index} className="menu-item">
-                  <button className="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent rounded-lg transition-all duration-300">
+                  <a
+                    href={item.href}
+                    className="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-transparent rounded-lg transition-all duration-300"
+                  >
                     <span className="font-semibold text-sm">{item.name}</span>
-                  </button>
+                  </a>
                 </div>
               ))}
 
