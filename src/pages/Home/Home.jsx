@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import Container from "../../components/Layout/Container";
+import Container from "../../Layout/Container";
 import TrustedBySection from "../../components/TrustedBy/TrustedBy";
 import DragCards from "../../components/DragCards/DragCards";
 import TransactionStepsCarousel from "../../components/TransactionCarousel/TransactionCarousel";
@@ -12,6 +12,7 @@ import TelegramChatOverlay from "../../components/TelegramChatOverlay/TelegramCh
 import ManualCard from "../../components/ManualCard/ManualCard";
 import B2BPayments from "../../components/B2B/B2BPayments";
 import HeroSection from "../HeroSection/HeroSection";
+import ComparisonTable from "../../components/ComparisonTable/ComparisonTable";
 // import { motion } from "framer-motion";
 
 const TypingText = () => {
@@ -419,6 +420,10 @@ const Home = () => {
           <DragCards />
         </section>
 
+        <section>
+          <ComparisonTable/>
+        </section>
+
         <Container>
         {/* <section>
           <ManualCard/>
@@ -436,9 +441,9 @@ const Home = () => {
             <Comments />
           </section>
         </Container>
-        <section>
+        {/* <section>
           <StripePartnerBanner />
-        </section>
+        </section> */}
       </main>
     </>
   );
