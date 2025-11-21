@@ -23,7 +23,7 @@ const DragCardsSection = () => {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
-      rootMargin: "0px 0px -50px 0px"
+      rootMargin: "0px 0px -50px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -138,20 +138,25 @@ const DragCardsSection = () => {
       `}</style>
 
       <Container>
-        <div ref={sectionRef} className="mx-auto flex flex-col md:flex-row justify-between items-center gap-16">
-          <div className={`md:w-1/2 text-left space-y-6 ${
-            isVisible ? "animate-fade-in-left opacity-0" : "opacity-0"
-          }`}>
+        <div
+          ref={sectionRef}
+          className="mx-auto flex flex-col md:flex-row justify-between items-center gap-16"
+        >
+          <div
+            className={`md:w-1/2 text-left space-y-6 ml-8 ${
+              isVisible ? "animate-fade-in-left opacity-0" : "opacity-0"
+            }`}
+          >
             <h2 className="text-5xl text-black mb-18">How does it work?</h2>
             <p className="text-lg text-gray-600">
               Trustap simplifies transactions by securely holding the buyer's
               payment in the Trustap Vault until the order is fulfilled and
-              inspected. Once both parties are satisfied, the funds are released,
-              ensuring a smooth and worry-free process.
+              inspected. Once both parties are satisfied, the funds are
+              released, ensuring a smooth and worry-free process.
             </p>
           </div>
 
-          <div className="md:w-1/2 flex flex-col items-center space-y-12">
+          <div className="md:w-1/2 flex flex-col items-center space-y-12 ml-60">
             <div
               ref={trustapRef}
               onDragOver={handleDragOver}
@@ -175,7 +180,9 @@ const DragCardsSection = () => {
 
             <div
               className={`relative w-full max-w-64 ${
-                isVisible ? "animate-fade-in-up opacity-0 delay-400" : "opacity-0"
+                isVisible
+                  ? "animate-fade-in-up opacity-0 delay-400"
+                  : "opacity-0"
               }`}
               style={{ minHeight: "330px" }}
             >

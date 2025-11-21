@@ -3,8 +3,8 @@ import React from "react";
 const Container = ({ children, className = "", size = "default" }) => {
   const sizeClasses = {
     small: "max-w-4xl",
-    default: "max-w-[1510px]",
-    large: "max-w-[1510px]",
+    default: "max-w-[1400px]",
+    large: "max-w-[1400px]",
     full: "max-w-full",
   };
 

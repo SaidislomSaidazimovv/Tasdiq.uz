@@ -11,6 +11,7 @@ import HomeMainImg from "../../assets/hero_main_img.png";
 import TelegramChatOverlay from "../../components/TelegramChatOverlay/TelegramChatOverlay";
 import ManualCard from "../../components/ManualCard/ManualCard";
 import B2BPayments from "../../components/B2B/B2BPayments";
+import HeroSection from "../HeroSection/HeroSection";
 // import { motion } from "framer-motion";
 
 const TypingText = () => {
@@ -286,7 +287,7 @@ const Home = () => {
 
       <main className="min-h-screen bg-white pt-50">
         <Container size="large">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-10">
                 <div className="space-y-6">
                   <h1
@@ -349,7 +350,11 @@ const Home = () => {
                   <TelegramChatOverlay />
                 </div>
               </div>
-            </div>
+            </div> */}
+
+            <section>
+              <HeroSection/>
+            </section>
 
           <div
             className={`w-full bg-white py-30 px-4 ${
@@ -415,12 +420,12 @@ const Home = () => {
         </section>
 
         <Container>
-        <section>
+        {/* <section>
           <ManualCard/>
         </section>
         <section>
           <B2BPayments/>
-        </section>
+        </section> */}
           <section className="relative w-full py-30 px-8 overflow-hidden">
             <TransactionStepsCarousel />
           </section>
