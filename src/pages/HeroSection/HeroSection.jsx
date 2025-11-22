@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Check } from "lucide-react";
-import TelegramChatOverlay from "../../components/TelegramChatOverlay/TelegramChatOverlay";
+import TelegramChatOverlay from "./../../components/TelegramChatOverlay/TelegramChatOverlay";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -73,9 +73,8 @@ const HeroSection = () => {
           box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
         }
       `}</style>
-
       <div className="container mx-auto px-4 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-33 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="max-w-2xl">
             <div
               className={`inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-5 py-2.5 rounded-full mb-8 ${
@@ -83,7 +82,9 @@ const HeroSection = () => {
               }`}
             >
               <span className="text-2xl">🎯</span>
-              <span className="font-bold text-sm">O'zbekistonda birinchi</span>
+              <span className="font-semibold text-sm">
+                O'zbekistonda birinchi
+              </span>
             </div>
             <div className="space-y-2 mb-8">
               <h1
@@ -131,12 +132,9 @@ const HeroSection = () => {
                 Demoni ko'rish
               </button>
 
-              <a
-                href="#how-it-works"
-                className="px-8 py-4 bg-white text-gray-900 text-lg font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300"
-              >
+              <button className="px-8 py-4 bg-white text-gray-900 text-lg font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300">
                 Qanday ishlaydi?
-              </a>
+              </button>
             </div>
             <div
               className={`flex flex-wrap gap-4 ${
@@ -149,16 +147,14 @@ const HeroSection = () => {
                 <Check className="w-5 h-5" />
                 <span className="font-semibold text-sm">Bank litsenziyasi</span>
               </div>
-
               <div className="flex items-center space-x-2 bg-green-50 text-green-700 px-5 py-3 rounded-full border border-green-200">
                 <Check className="w-5 h-5" />
                 <span className="font-semibold text-sm">256-bit shifrash</span>
               </div>
             </div>
           </div>
-
           <div
-            className={`relative ml-50 ${
+            className={`relative ${
               isVisible
                 ? "animate-fade-in-right opacity-0 delay-300"
                 : "opacity-0"
@@ -168,7 +164,6 @@ const HeroSection = () => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-full h-full bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-3xl opacity-30 blur-3xl"></div>
               </div>
-
               <TelegramChatOverlay />
             </div>
           </div>

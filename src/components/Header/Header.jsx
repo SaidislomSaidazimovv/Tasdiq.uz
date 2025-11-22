@@ -176,13 +176,15 @@ const Header = () => {
       `}</style>
 
       <header
-        className={`fixed left-1/2 -translate-x-1/2 w-[88%] max-w-5xl z-50 transition-all duration-700 ease-in-out ${
-          scrolled ? "bg-white shadow-2xl top-4" : "bg-white shadow-lg top-6"
+        className={`fixed left-1/2 -translate-x-1/2 w-[95%] sm:w-[92%] md:w-[90%] lg:w-[88%] max-w-5xl z-50 transition-all duration-700 ease-in-out ${
+          scrolled
+            ? "bg-white shadow-2xl top-2 sm:top-3 md:top-4"
+            : "bg-white shadow-lg top-3 sm:top-4 md:top-6"
         } rounded-full backdrop-blur-lg bg-opacity-95 ${
           visible ? "translate-y-0 opacity-100" : "-translate-y-32 opacity-0"
         }`}
       >
-        <div className="flex items-center justify-between h-16 px-8">
+        <div className="flex items-center justify-between h-14 sm:h-15 md:h-16 px-4 sm:px-6 md:px-8">
           <div className="flex items-center animate-slide-in-left">
             <a href="/" className="flex items-center logo-animate">
               <img
@@ -240,13 +242,13 @@ const Header = () => {
           </div>
 
           <button
-            className="lg:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 transform hover:scale-110"
+            className="lg:hidden p-1.5 sm:p-2 text-gray-700 hover:text-blue-600 transition-colors duration-300 transform hover:scale-110"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
             )}
           </button>
         </div>
