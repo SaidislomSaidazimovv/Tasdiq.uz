@@ -1,36 +1,39 @@
 import React, { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
+import { db } from "../../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const UserComments = () => {
   const [comment, setComment] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
     if (!comment.trim()) return;
+    setIsLoading(true);
 
-    const username = localStorage.getItem("username");
-    const email = localStorage.getItem("userEmail");
-
-    const newComment = {
-      id: Date.now(),
-      username: username || "Anonim",
-      email: email || "",
-      text: comment,
-      date: new Date().toISOString()
-    };
-
-    const existingComments = JSON.parse(localStorage.getItem("comments") || "[]");
-    existingComments.unshift(newComment);
-    localStorage.setItem("comments", JSON.stringify(existingComments));
-
-    setComment("");
-    setShowSuccess(true);
-    
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
+    try {
+      const username = localStorage.getItem("username");
+      const email = localStorage.getItem("userEmail");
+      await addDoc(collection(db, "comments"), {
+        username: username || "Anonim",
+        email: email || "",
+        text: comment.trim(),
+        timestamp: serverTimestamp(),
+        createdAt: new Date().toISOString(),
+      });
+      setComment("");
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Comment yuborishda xatolik:", error);
+      alert("Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -56,22 +59,26 @@ const UserComments = () => {
                 rows="5"
                 placeholder="Sizning fikringiz..."
                 required
+                disabled={isLoading}
               />
             </div>
 
             <button
               type="submit"
-              className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
+              disabled={isLoading}
+              className="w-full flex items-center justify-center space-x-3 px-8 py-4 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
               <Send className="w-5 h-5" />
-              <span>Yuborish</span>
+              <span>{isLoading ? "Yuborilmoqda..." : "Yuborish"}</span>
             </button>
           </form>
 
           {showSuccess && (
             <div className="mt-6 bg-green-100 border-2 border-green-500 text-green-700 px-6 py-4 rounded-2xl flex items-center justify-center space-x-3 animate-fade-in">
               <CheckCircle className="w-6 h-6" />
-              <span className="font-semibold">Fikringiz muvaffaqiyatli yuborildi!</span>
+              <span className="font-semibold">
+                Fikringiz muvaffaqiyatli yuborildi!
+              </span>
             </div>
           )}
         </div>
